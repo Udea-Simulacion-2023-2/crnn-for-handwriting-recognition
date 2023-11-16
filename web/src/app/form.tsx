@@ -1,47 +1,57 @@
-"use client";
-
-import { useFormState } from "react-dom";
-import { useState } from "react";
+import { PaperClipIcon, BookmarkIcon } from "@heroicons/react/24/outline";
 import { PhotoIcon } from "@heroicons/react/24/solid";
+import { useFormState } from "react-dom";
+import { ChangeEvent, useState } from "react";
 import { SubmitButton } from "@/app/submit-button";
 import { submit } from "@/app/actions";
+import Image from "next/image";
 
-export function Form() {
-  const [state, action] = useFormState(submit, { writing: null });
-  const [source, setSource] = useState(null);
+type FormProps = {
+  onSave: ({ source, sentence }: { source: string; sentence: string }) => void;
+};
+
+export function Form({ onSave }: FormProps) {
+  const [state, action] = useFormState(submit, { writing: "" });
+  const [source, setSource] = useState<string | null>(null);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files === null) {
+      return;
+    }
+
     const file = event.target.files[0];
+
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setSource(e.target.result);
+        if (e.target === null) {
+          return;
+        }
+        setSource(e.target.result as string);
       };
       reader.readAsDataURL(file);
     }
   };
 
+  const handleSave = () => {
+    if (source === null) {
+      return;
+    }
+    onSave({ source, sentence: "Lorem" });
+  };
+
   return (
-    <form action={action} className="w-full">
-      <div className="col-span-full">
-        <label
-          htmlFor="handwriting"
-          className="block text-sm font-medium leading-6 text-gray-900"
-        >
-          Choose a handwriting picture
-        </label>
-        <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-          <div className="text-center">
-            <PhotoIcon
-              className="mx-auto h-12 w-12 text-gray-300"
-              aria-hidden="true"
-            />
-            <div className="mt-4 flex text-sm leading-6 text-gray-600">
+    <div className="w-full">
+      <div className="w-full">
+        <form action={action}>
+          <div>
+            <div className="flex gap-2 items-center">
               <label
                 htmlFor="image"
-                className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                className="cursor-pointer inline-flex items-center rounded-sm gap-2 py-2 px-4 text-sm font-normal text-gray-900 border border-slate-900/20"
               >
-                <span>Upload a file</span>
+                <PaperClipIcon className="h-5 w-5" />
+                <span className="hidden sm:inline-flex">Attach</span>
                 <input
                   id="image"
                   name="image"
@@ -51,25 +61,60 @@ export function Form() {
                   onChange={handleChange}
                 />
               </label>
-              <p className="pl-1">or drag and drop</p>
+              <SubmitButton disabled={source === null} />
+              <span
+                className="cursor-pointer inline-flex gap-2 items-center rounded-sm py-2 px-4 text-sm font-normal text-gray-900 border border-slate-900/20"
+                onClick={handleSave}
+              >
+                <BookmarkIcon className="w-5 h-5" />
+                <span className="hidden sm:inline-flex">Save</span>
+              </span>
             </div>
-            <p className="text-xs leading-5 text-gray-600">
-              PNG, JPG, GIF up to 10MB
-            </p>
+          </div>
+
+          <div className="mt-2">
+            <span className="text-gray-900 font-normal text-sm">
+              Please attach a file png or jpg with white background.
+            </span>
+          </div>
+        </form>
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <div>
+            <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-700">
+              Handwriting
+            </h4>
+          </div>
+          <div className="w-full">
+            <div className="flex items-center justify-center w-full aspect-video bg-slate-900/20 rounded-sm">
+              {source ? (
+                <Image
+                  src={source}
+                  alt="Selected Image"
+                  className="w-full aspect-video object-contain object-center rounded-sm"
+                />
+              ) : (
+                <PhotoIcon className="w-8 h-8 text-gray-400" />
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <div className="flex items-center gap-x-4">
+            <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-700">
+              Recognition
+            </h4>
+          </div>
+          <div className="w-full border border-slate-900/20 rounded-sm aspect-video">
+            <div className="p-2">
+              <p className="text-gray-700">...</p>
+            </div>
           </div>
         </div>
       </div>
-
-      <SubmitButton />
-      <p aria-live="polite">{state?.writing}</p>
-
-      {source && (
-        <img
-          src={source}
-          alt="Selected Image"
-          style={{ maxWidth: "100%", maxHeight: "200px" }}
-        />
-      )}
-    </form>
+    </div>
   );
 }
