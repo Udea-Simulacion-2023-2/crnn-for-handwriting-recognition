@@ -93,6 +93,8 @@ export function Form({ onSave }: FormProps) {
                 <Image
                   src={source}
                   alt="Selected Image"
+                  width={200}
+                  height={200}
                   className="w-full aspect-video object-contain object-center rounded-sm"
                 />
               ) : (

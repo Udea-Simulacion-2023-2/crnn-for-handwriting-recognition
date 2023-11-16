@@ -47,6 +47,8 @@ export function Translations() {
                     <Image
                       src={source}
                       className="w-full object-contain aspect-video"
+                      width={200}
+                      height={200}
                       alt={"Image used to extract text"}
                     />
                   </div>
