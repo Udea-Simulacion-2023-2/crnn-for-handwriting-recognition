@@ -1,7 +1,6 @@
 import os
 from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import JSONResponse
-from PIL import Image
 import numpy as np
 import tensorflow as tf
 from keras import backend as K
