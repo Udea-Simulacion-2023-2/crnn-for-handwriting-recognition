@@ -8,7 +8,7 @@ import tensorflow as tf
 import uvicorn
 
 app = FastAPI()
-model = tf.keras.models.load_model("api/Model/model_20mil_80epoch.h5",compile=False)
+model = tf.keras.models.load_model("Model/model_20mil_80epoch.h5",compile=False)
 
 
 @app.post("/api/v1/handwritings/")
