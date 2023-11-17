@@ -34,10 +34,10 @@ export function Form({ onSave }: FormProps) {
   };
 
   const handleSave = () => {
-    if (source === null) {
+    if (source === null || state.writing === "") {
       return;
     }
-    onSave({ source, sentence: "Lorem" });
+    onSave({ source, sentence: state.writing });
   };
 
   return (
@@ -112,7 +112,9 @@ export function Form({ onSave }: FormProps) {
           </div>
           <div className="w-full border border-slate-900/20 rounded-sm aspect-video">
             <div className="p-2">
-              <p className="text-gray-700">...</p>
+              <p className="text-gray-700">
+                {state.writing === "" ? "..." : state.writing}
+              </p>
             </div>
           </div>
         </div>
