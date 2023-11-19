@@ -14,9 +14,9 @@ interpretación de escritura a mano.
 - [Estructura del proyecto](#estructura-del-proyecto)
 - [Construcción del modelo](#construcción-del-modelo)
   - [Pre-procesamiento-de-los-datos](#pre-procesamiento-de-los-datos)
-- [Entrenamiento](#entrenamiento)
-- [Validación](#validación)
-- [Diagrama](#diagrama)
+  - [Entrenamiento](#entrenamiento)
+  - [Validación](#validación)
+  - [Diagrama](#diagrama)
 
 ## Base de datos
 Handwriting Recognition [kaggle.com](https://www.kaggle.com/datasets/landlord/handwriting-recognition/data)
@@ -78,7 +78,7 @@ El sitio puede ser accedido desde [aquí]() y el Colab desde
       texto no quede horizontal sino alineado con el eje vertical. 
    4. Se normaliza la imagen al rango [0,1]
 
-## Construcción del modelo
+### Construcción del modelo
 El modelo está compuesto por una combinación de capas convolucionales **CNN** y
 recurrentes **RNN**: 
 
@@ -100,10 +100,10 @@ dimensionalidad espacial de la imagen para pasarla a la **RNN**. La **RNN**
 modela la secuencia temporal de los caracteres, útil para el texto. Las capas
 **LSTM** bidireccionales pueden ver el contexto en ambas direcciones.
 
-## Entrenamiento 
+### Entrenamiento 
 Para el entrenamiento del modelo se utilizaron 30.000 imágenes (epoch = 80)
 
-## Validación
+### Validación
 Para la validación del modelo se utilizaron 3.000 imágenes con un resultado:
 
 - Correct characters predicted: 81.85%
