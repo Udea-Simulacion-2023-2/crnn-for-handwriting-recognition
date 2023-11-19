@@ -58,9 +58,10 @@ consta de 3 carpetas principales:
       utilizó para descargar, explorar, pre procesar el dataset, entrenar el
       modelo, validar el modelo y exportar el modelo
 
-El sitio puede ser accedido desde [aquí]() y el Colab desde
-[aquí](https://colab.research.google.com/drive/1n7IS2fDulszekfoGPWPGpNGYoJzeJ0yA?usp=sharing
-)
+El sitio puede ser accedido desde
+[aquí](http://handwritingrecognition.us-east-1.elasticbeanstalk.com/) y el
+Colab desde
+[aquí](https://colab.research.google.com/drive/1n7IS2fDulszekfoGPWPGpNGYoJzeJ0yA?usp=sharing)
 
 ## Desarrollo del proyecto
 
