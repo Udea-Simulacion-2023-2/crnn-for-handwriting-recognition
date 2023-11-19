@@ -43,13 +43,15 @@ consta de 3 carpetas principales:
 
 1. Backend:
    1. `/api`: en esta carpeta se encuentra la **API** web (__HTTP__) que hace
-      uso del modelo, y que sirve en
-      [aqui](http://apihandwritingrecognition.us-east-1.elasticbeanstalk.com/api/v1/test/).
-      Está desarrollado con **Python** y **FastAPI** 
+      uso del modelo, está desarrollado con **Python** y **FastAPI** y que sirve en:
+      [aqui](http://apihandwritingrecognition.us-east-1.elasticbeanstalk.com/api/v1/handwritings/).
+      La petición se hace con método **POST** y con body de tipo **FORM-DATA** key=image y value=file.png ó .jpg.
+      Enpoint para test con método **GET**: [aqui](http://apihandwritingrecognition.us-east-1.elasticbeanstalk.com/api/v1/test/).       
    2. `/api/Model`: en esta carpeta se encuentra el modelo exportado en formato
       **h5** que consume la **API**.
    3. `/api/Utils`: esta carpeta contiene algunas funciones importantes para
-      pre procesar la imagen enviada por el usuario 
+      pre procesar la imagen enviada por el usuario y también usadas en el entrenamiento
+      del modelo. 
 2. FrontEnd
    1. `/web`: en esta carpeta se encuentra el proyecto frontend hecho con
       NextJS 14 y React
