@@ -24,8 +24,7 @@ Handwriting Recognition [kaggle.com](https://www.kaggle.com/datasets/landlord/ha
 La base de datos consta de más de 400.000 imágenes de **nombres** escritos a
 mano. En total hay 206.799 nombres y 207.024 apellidos, los cuales están
 divididos en conjunto de entrenamiento (331.059), prueba (41.328) y validación
-(41.328). La base de datos la compone 3 archivos CSV que pueden ser encontrados
-en las carpetas `test_v2`, `train_v2` y `validation_v2`, estos son: 
+(41.328). La base de datos la compone 3 archivos CSV: 
 
 1. written_name_test_v2.csv 
 2. written_name_train_v2.csv 
@@ -33,6 +32,9 @@ en las carpetas `test_v2`, `train_v2` y `validation_v2`, estos son:
 
 Donde cada archivo tiene 2 columnas: `FILENAME` (URL de la imagen) e `IDENTITY`
 (Transcripción del nombre escrito a mano).
+
+Adicionalmente 3 carpetas donde se encuentran las imagenes de cada set de datos
+`test_v2`, `train_v2` y `validation_v2`,
 
 ## Estructura del proyecto
 El repositorio de
