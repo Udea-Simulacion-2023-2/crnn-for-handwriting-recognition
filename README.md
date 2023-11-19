@@ -16,7 +16,7 @@ interpretación de escritura a mano.
   - [Pre-procesamiento-de-los-datos](#pre-procesamiento-de-los-datos)
   - [Entrenamiento](#entrenamiento)
   - [Validación](#validación)
-  - [Diagrama](#diagrama)
+- [Diagrama](#diagrama)
 
 ## Base de datos
 Handwriting Recognition [kaggle.com](https://www.kaggle.com/datasets/landlord/handwriting-recognition/data)
