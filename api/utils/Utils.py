@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-class Util:
+class Utils:
     alphabets = u"ABCDEFGHIJKLMNOPQRSTUVWXYZ-' "
     max_str_len = 24 # max length of input labels
     num_of_characters = len(alphabets) + 1 # +1 for ctc pseudo blank
